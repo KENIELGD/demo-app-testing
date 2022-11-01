@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CalculatorService } from './services/calculator.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,28 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  num1: number;
+  num2: number;
+  result = 0;
+
+  constructor(private calculatorService: CalculatorService) {}
+
+  async sum() {
+    console.log(this.num1);
+    
+    this.result = this.calculatorService.sum(this.num1, this.num2);
+  }
+
+  substract() {
+    this.result = this.calculatorService.sum(this.num1, this.num2);
+  }
+
+  multiplication() {
+    this.result = this.calculatorService.sum(this.num1, this.num2);
+  }
+
+  division() {
+    this.result = this.calculatorService.sum(this.num1, this.num2);
+  }
 
 }

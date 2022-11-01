@@ -8,6 +8,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('@chiragrupani/karma-chromium-edge-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
@@ -37,8 +38,14 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: ['Chrome', 'Edge'],
     singleRun: false,
-    restartOnFileChange: true
+    restartOnFileChange: true,
+    customLaunchers: {
+      EdgeHeadlessCI: {
+        base: "EdgeHeadless",
+        flags: ["--no-sandbox"],
+      },
+    },
   });
 };
